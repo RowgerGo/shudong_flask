@@ -6,3 +6,5 @@ __pycache__
 __pycache__/
 __pycache__/*
 *.log
+#忽略数据库配置文件
+db_config.py

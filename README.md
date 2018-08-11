@@ -13,8 +13,13 @@ flask-shudong树洞app和微信公众号接口api
 2. pipenv install
 3. 使用pycharm打开项目，设置环境（pipenv --venv 查看路径）
 
-#### 使用说明
-
+#### 需要安装的包
+```
+flask = "*"
+flask-sqlalchemy = "*"
+flask-script = "*"
+```
+使用`conda install mysqlclient`来安装mysqlclient，因为在Windows下使用pip安装mysqlclient报错
 1. xxxx
 2. xxxx
 3. xxxx
