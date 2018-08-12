@@ -20,9 +20,15 @@ flask-sqlalchemy = "*"
 flask-script = "*"
 ```
 使用`conda install mysqlclient`来安装mysqlclient，因为在Windows下使用pip安装mysqlclient报错
-1. xxxx
-2. xxxx
-3. xxxx
-
+```
+pip install pymysql
+```
+```
+python manager.py runserver
+```
+使用flask-sqlacodegen自动生成model
+```
+flask-sqlacodegen  mysql+pymysql://root:123456@118.24.126.15:3306/hahh --tables yi_admin --outfile "common/models/user.py" --flask
+```
 #### 参与贡献
 
