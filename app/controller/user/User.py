@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from flask import Blueprint,render_template,request,jsonify
 from common.models.user import YiAdmin
+from common.libs.user.UserService import UserService
+from common.libs.Utils.RespUtils import RespUtils
 route_user = Blueprint( 'user_page',__name__ )
 
 @route_user.route( "/login", methods=["GET","POST"])
@@ -16,20 +18,22 @@ def login():
     login_name=req['login_name'] if 'login_name' in req else ''
     login_pwd=req['login_pwd'] if 'login_pwd' in req else ''
     if login_name is None or len(login_name)<1:
-        resp['code']=-1
-        resp['msg']="请输入正确的登录用户名~~"
-        return jsonify(resp)
+        return RespUtils.error("请输入正确的登录用户名~~")
     if login_pwd is None or len(login_pwd)<1:
-        resp['code']=-1
-        resp['msg']="请输入正确的登录密码~~"
-        return jsonify(resp)
+
+        return RespUtils.error("请输入正确的登录密码~~")
+
 
     user_info = YiAdmin.query.filter_by(username=login_name).first()
     if not user_info:
-        resp['code'] = -1
-        resp['msg'] = "请输入正确的登录用户名用户名用户名用户名~~"
-        return jsonify(resp)
 
+        return RespUtils.error("请输入正确的登录用户名或密码~~")
+
+    if user_info.password !=UserService.genePwd(login_pwd,user_info.login_salt):
+
+        return RespUtils.error("请输入正确的登录用户名或密码~~")
+
+    return '12'
 @route_user.route( "/edit" )
 def edit():
     return render_template( "user/edit.html" )

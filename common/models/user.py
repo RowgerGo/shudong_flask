@@ -13,6 +13,7 @@ class YiAdmin(db.Model):
     username = db.Column(db.String(16), nullable=False)
     password = db.Column(db.String(32), nullable=False)
     email = db.Column(db.String(50), nullable=False)
+    login_salt = db.Column(db.String(50), nullable=True)
     lastip = db.Column(db.Integer, nullable=False)
     lasttime = db.Column(db.Integer, nullable=False)
     level = db.Column(db.Text, nullable=False)
