@@ -1,4 +1,14 @@
 from application import app
+
+'''
+统一拦截器
+'''
+from app.interceptors.AuthInterceptor import *
+
+
+'''
+蓝图功能，对所有的url进行蓝图功能配置
+'''
 from app.controller.index import route_index
 from app.controller.user.User import route_user
 from app.controller.static import route_static

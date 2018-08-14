@@ -41,3 +41,11 @@ def edit():
 @route_user.route( "/reset-pwd" )
 def resetPwd():
     return render_template( "user/reset_pwd.html" )
+
+@route_user.route( "/create_user" )
+def create_user():
+    req = request.values
+    login_name = req['login_name'] if 'login_name' in req else ''
+    login_pwd = req['login_pwd'] if 'login_pwd' in req else ''
+
+    return '1'
