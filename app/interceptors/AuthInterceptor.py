@@ -10,6 +10,6 @@ def before_request():
 
 def check_login():
     cookies=request.cookies
-    # auth_cookie= cookies[app.config['AUTH_COOKIE_NAME']] if cookies[app.config['AUTH_COOKIE_NAME']] in cookies else ""
+    auth_cookie= cookies[app.config['AUTH_COOKIE_NAME']] if app.config['AUTH_COOKIE_NAME'] in cookies else ""
     app.logger.info('----------------------')
     app.logger.info(cookies)
