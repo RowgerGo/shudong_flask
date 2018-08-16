@@ -12,6 +12,7 @@ class Application(Flask):
         #SQLALCHEMY_DATABASE_URI='mysql://root:123445@127.0.0.1/mysql'
         #SQLALCHEMY_TRACK_MODIFICATIONS=False
         self.config.from_pyfile('config/db_config.py')
+        self.config.from_pyfile('config/mail_config.py')
         db.init_app(self)
 
 db=SQLAlchemy()
