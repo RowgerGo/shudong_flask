@@ -12,12 +12,15 @@ def index():
         return RespUtils.error('不支持get请求')
 
     # send the email
+    req = request.values
+    email = req['email'] if 'email' in req else ""
+    if email is None or len(email) < 1:
+        return RespUtils.error("请输入正确的邮箱地址~~")
     msg = Message('Hello from Flask',
-                  recipients=[request.form['email']])
+                  recipients=[email])
     msg.body = 'This is a test email sent from a background Celery task.'
-    if request.form['submit'] == 'Send':
-        # send right away
-        send_async_email.delay(msg)
+
+    send_async_email.delay(msg)
 
 
 @Celery.task

@@ -1,5 +1,5 @@
 import os
-MAIL_SERVER='smtp.googlemail.com'
+MAIL_SERVER='smtp.mailgun.org'
 MAIL_PORT=587
 MAIL_USE_TLS=True
 MAIL_USERNAME=os.environ.get('MAIL_USERNAME')
